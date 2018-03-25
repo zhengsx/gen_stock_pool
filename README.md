@@ -8,5 +8,5 @@ fin.txt是基金重仓且增仓，且过去一个季度持股人数减少的股�
 #重要
 
 1,东方财富网的数据链接未来可能改变，每个季度的url日期本身也需要改变，可以用firefox的F12调出network面板来观察更新之。
-2,基金也可能做股票失败，特别是遇到系统性风险的时候。所以需要参考https://github.com/alextooter/bigdeal中的大单取向，
+2,基金也可能做股票失败，特别是遇到系统性风险的时候。所以需要参考https://github.com/alextooter/bigdeal 中的大单取向，
 注意观察市场主流力量的态度。

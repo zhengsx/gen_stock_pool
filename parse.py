@@ -20,7 +20,7 @@ dec_percent = -5
 ## sample data:
 ## var bDQXYwir = {pages:1,data:[{"SCode":"603331"
 
-link_found_add = '''http://data.eastmoney.com/zlsj/zlsj_list.aspx?type=ajax&st=6&sr=-1&p=1&ps=3500&jsObj=aJlEvHvx&stat=1&cmd=1&date=2017-12-31'''
+link_found_add = '''http://data.eastmoney.com/zlsj/zlsj_list.aspx?type=ajax&st=6&sr=-1&p=1&ps=3500&jsObj=aJlEvHvx&stat=1&cmd=1&date=2018-03-31'''
 
 tmpstr = '''{"pages":1,"data":'''
 endstr = '''}'''
@@ -80,8 +80,9 @@ for s in l:
         ltzb5plus.append((s['SCode']))
     if s['RateChange'] > add_percent:
 	    addrate.append((s['SCode']))
-    if s['VPosition'] > holdingValue:
+    if s['VPosition'] > holdingValue * 10:
 	    yi.append((s['SCode']))
+
 for i in ltzb5plus:
     if i in addrate:
         if i in yi:

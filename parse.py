@@ -9,7 +9,22 @@ from openpyxl.styles import Font
 import tushare as ts
 import time
 #import pudb; pu.db
+#5月10日基金一季报出完，过几天再更新
 
+
+#1季报：每年4月1日——4月30日。
+#2季报（中报）：每年7月1日——8月30日。
+#3季报： 每年10月1日——10月31日
+#4季报 （年报）：每年1月1日——4月30日。
+
+
+
+#基金报表：2.1，                 5.1，                     8.1，    10.1会公布
+#                   2.1～4.20     
+
+#1.1到3.15做一波
+
+#3.30公布之后，4月开始做一波到6.15出货          
 
 #持股比例大于5，并且增仓的.
 ltzb = 5
@@ -20,7 +35,7 @@ dec_percent = -5
 ## sample data:
 ## var bDQXYwir = {pages:1,data:[{"SCode":"603331"
 
-link_found_add = '''http://data.eastmoney.com/zlsj/zlsj_list.aspx?type=ajax&st=6&sr=-1&p=1&ps=3500&jsObj=aJlEvHvx&stat=1&cmd=1&date=2018-03-31'''
+link_found_add = '''http://data.eastmoney.com/zlsj/zlsj_list.aspx?type=ajax&st=2&sr=-1&p=1&ps=3500&jsObj=bexGpnao&stat=1&cmd=2&date=2018-06-30'''
 
 tmpstr = '''{"pages":1,"data":'''
 endstr = '''}'''
@@ -143,7 +158,7 @@ def to_excel(result_list,name):
 
     l = result_list
     wb = openpyxl.Workbook()
-    sheet = wb.get_active_sheet()
+    sheet = wb.active
     sheet.title = "股票池"
 
     sheet.freeze_panes = 'A2'

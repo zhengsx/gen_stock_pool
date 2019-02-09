@@ -11,31 +11,16 @@ import time
 #import pudb; pu.db
 #5月10日基金一季报出完，过几天再更新
 
-
-#1季报：每年4月1日——4月30日。
-#2季报（中报）：每年7月1日——8月30日。
-#3季报： 每年10月1日——10月31日
-#4季报 （年报）：每年1月1日——4月30日。
-
-
-
-#基金报表：2.1，                 5.1，                     8.1，    10.1会公布
-#                   2.1～4.20     
-
-#1.1到3.15做一波
-
-#3.30公布之后，4月开始做一波到6.15出货          
-
 #持股比例大于5，并且增仓的.
 ltzb = 5
 add_percent = 5
 holdingValue = 100000000
 dec_percent = -5
 
-## sample data: ## var bDQXYwir = {pages:1,data:[{"SCode":"603331"
-## 0331 0630 0930,1231
+## sample data:
+## var bDQXYwir = {pages:1,data:[{"SCode":"603331"
 
-link_found_add = '''http://data.eastmoney.com/zlsj/zlsj_list.aspx?type=ajax&st=2&sr=-1&p=1&ps=3500&jsObj=bexGpnao&stat=1&cmd=2&date=2018-12-31'''
+link_found_add = '''http://data.eastmoney.com/zlsj/zlsj_list.aspx?type=ajax&st=6&sr=-1&p=1&ps=3500&jsObj=aJlEvHvx&stat=1&cmd=1&date=2018-03-31'''
 
 tmpstr = '''{"pages":1,"data":'''
 endstr = '''}'''
@@ -95,7 +80,7 @@ for s in l:
         ltzb5plus.append((s['SCode']))
     if s['RateChange'] > add_percent:
 	    addrate.append((s['SCode']))
-    if s['VPosition'] > holdingValue * 5:
+    if s['VPosition'] > holdingValue * 10:
 	    yi.append((s['SCode']))
 
 for i in ltzb5plus:
@@ -111,7 +96,7 @@ for s in l:
 #print(result)
 print("add > 5%:",len(addrate))
 print("ltzb > 5%:",len(ltzb5plus))
-print("value > 5亿:",len(yi))
+print("value > 1亿:",len(yi))
 print("增仓", len(result))
 print("持股3亿并且增仓35%以上",len(good))
 
@@ -147,7 +132,7 @@ write('dec.txt',result2)
 write('fin.txt',finalresult)
 
 write('流通占比超过5%.txt',ltzb5plus)
-write('持股大于5亿.txt',yi)
+write('持股大于1亿.txt',yi)
 write('增仓大于5%.txt',addrate)
 write('持股3亿并且增仓35%以上.txt',good)
 
@@ -196,9 +181,7 @@ def to_excel(result_list,name):
                 sheet["H%d" %(1+i)].value= x
                 sheet["I%d" %(1+i)].value= y
                 sheet["J%d" %(1+i)].value= date
-        abs_result = value-value/(1+rate/100)
-        sheet["K%d" %(1+i)].value= abs_result
-        ##print("value,rate,result",value,rate,abs_result)
+        sheet["K%d" %(1+i)].value= value-value/(1+rate)
 
     strtime =time.strftime('%Y-%m-%d_%H.%M',time.localtime(time.time()))
     str = name+strtime

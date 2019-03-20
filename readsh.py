@@ -23,11 +23,11 @@ def sayit():
 
     yy=xx.split(",",6)
     ##上证指数,3033.9251,12.1739,0.40,1161979,11325518
-    str1 = yy[0]+str(round(float(yy[1]),0)) +"涨幅" + str(round(float(yy[3]),2)) +"成交额" + str(round(int(yy[5])/10000,0)) + "亿"
-    call(['say',str1])
+    str1 = "\"" +yy[0]+str(round(float(yy[1]),0)) +"涨幅" + str(round(float(yy[3]),2)) +"成交额" + str(round(int(yy[5])/10000,0)) + "亿" + "\""
+    call(['say-it',str1])
     ##for x in yy:
      ##   call(['say', x])
 
 while True:
     sayit()
-    time.sleep(6)
+    time.sleep(12)
